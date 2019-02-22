@@ -2,8 +2,13 @@ from cryptography.fernet import Fernet
 import sys
 print("Writing an encypted message using key.txt to message.txt")
 
-# Reading alice's key from key.txt
-with open("key.txt", "rb") as filealiceKey:
+try:
+    fileName=sys.argv[1]
+except IndexError:
+    fileName = 'key.txt'
+
+# Reading alice's key
+with open(fileName, "rb") as filealiceKey:
     alicekey = filealiceKey.read()
 
 # Encrypt message
