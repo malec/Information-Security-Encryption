@@ -11,4 +11,4 @@ with open("message.txt", "rb") as fileMessage:
     message = fileMessage.read()
 
 result = Fernet(key).decrypt(message)
-print ("The message is: \n" + result)
+print ("The message is:\n" + result)
