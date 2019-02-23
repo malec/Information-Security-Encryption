@@ -33,10 +33,8 @@ outputFileName = "ctext"
 
 # Read bob's public key
 try:
-    with open(bobPubKeyFileName, 'r') as pubKey:
-        encryptedMessage = base64.b64encode(
-            encryptMessage(loadKey(pubKey.read()), message)
-        )
+    with open(bobPubKeyFileName, 'r') as pubKeyFile:
+        pubKey = pubKeyFile.read()
 except IOError:
     print ("Couldn't find " + "\"" + bobPubKeyFileName +
            "\"")
@@ -45,7 +43,8 @@ except IOError:
 # Encrypt the message
 try:
     with open(outputFileName, 'w') as messageOut:
-        messageOut.write(encryptedMessage)
+        encryptedMessage = encryptMessage(loadKey(pubKey), message)
+        messageOut.write(base64.b64encode(encryptedMessage))
 except IOError:
     print ("Couldn't write to the file " + outputFileName)
     exit()
