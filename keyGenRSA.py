@@ -7,6 +7,11 @@ private_key = rsa.generate_private_key(
     public_exponent=65537, key_size=2048, backend=default_backend()
 )
 
+def generatePrivateKey():
+    return private_key.private_bytes(serialization.Encoding.PEM, serialization.PrivateFormat.TraditionalOpenSSL, serialization.NoEncryption())
+def generatePublicKey():
+    return private_key.public_key().public_bytes(serialization.Encoding.PEM, serialization.PublicFormat.SubjectPublicKeyInfo)
+
 try:
     pubFileName=sys.argv[2]
 except IndexError:
@@ -18,6 +23,6 @@ except IndexError:
     privateFileName = 'id_rsa'
 
 with open(pubFileName, 'wb') as file:
-    file.write(private_key.public_key().public_bytes(serialization.Encoding.PEM, serialization.PublicFormat.SubjectPublicKeyInfo))
+    file.write(generatePublicKey())
 with open(privateFileName, 'wb') as file:
-    file.write(private_key.private_bytes(serialization.Encoding.PEM, serialization.PrivateFormat.TraditionalOpenSSL, serialization.NoEncryption()))
+    file.write(generatePrivateKey())
