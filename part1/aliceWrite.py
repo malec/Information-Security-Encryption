@@ -1,19 +1,21 @@
 from cryptography.fernet import Fernet
 import sys
-print("Writing an encypted message using key.txt to message.txt")
 
+keyFileName = 'key.txt'
+messageOutFileName = "message.txt"
 try:
-    fileName=sys.argv[1]
+    message=sys.argv[1]
 except IndexError:
-    fileName = 'key.txt'
+    print "You need to provide a message."
+    exit()
 
 # Reading alice's key
-with open(fileName, "rb") as filealiceKey:
+with open(keyFileName, "rb") as filealiceKey:
     alicekey = filealiceKey.read()
 
 # Encrypt message
-encryptedMessage = Fernet(alicekey).encrypt(sys.argv[1])
+encryptedMessage = Fernet(alicekey).encrypt(message)
 
 # Write Result
-with open("message.txt", "wb") as filealiceMessage:
+with open(messageOutFileName, "wb") as filealiceMessage:
     filealiceMessage.write(encryptedMessage)
