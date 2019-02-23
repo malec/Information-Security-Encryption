@@ -1,19 +1,51 @@
 import sys
-from cryptography.hazmat.backends import default_backend
-from cryptography.hazmat.primitives import serialization
+import base64
+from cryptography.hazmat.backends import default_backend, interfaces
+from cryptography.hazmat.primitives import serialization, asymmetric, hashes
+
+
+def loadKey(key):
+    return serialization.load_pem_public_key(
+        key,
+        backend=default_backend()
+    )
+
+
+def encryptMessage(publicKey, message):
+    return publicKey.encrypt(
+        message,
+        asymmetric.padding.OAEP(
+            mgf=asymmetric.padding.MGF1(algorithm=hashes.SHA1()),
+            algorithm=hashes.SHA1(),
+            label=None
+        )
+    )
+
+
 try:
-    message=sys.argv[1]
+    message = sys.argv[1]
 except IndexError:
     print "Give me a message to proceed"
     exit()
 
-## Encrypt a message for bob
-aliceKeyFileName="aliceKeys/id_rsa"
-bobPubKeyFileName="bobsKeys/id_rsa.pub"
-with open(aliceKeyFileName) as key_file:
-    private_key = serialization.load_pem_private_key(
-        key_file.read(),
-        password=None,
-        backend=default_backend()
-    )
-    
+bobPubKeyFileName = "bobKeys/id_rsa.pub"
+outputFileName = "ctext"
+
+# Read bob's public key
+try:
+    with open(bobPubKeyFileName, 'r') as pubKey:
+        encryptedMessage = base64.b64encode(
+            encryptMessage(loadKey(pubKey.read()), message)
+        )
+except IOError:
+    print ("Couldn't find " + "\"" + bobPubKeyFileName +
+           "\"")
+    exit()
+
+# Encrypt the message
+try:
+    with open(outputFileName, 'w') as messageOut:
+        messageOut.write(encryptedMessage)
+except IOError:
+    print ("Couldn't write to the file " + outputFileName)
+    exit()
