@@ -21,9 +21,12 @@ def encryptMessage(publicKey, message):
         )
     )
 
-
+# Read message from the command line arg.
 try:
     message = sys.argv[1]
+    if(len(message)>18):
+        print("message is too long")
+        exit()
 except IndexError:
     print "Give me a message to proceed"
     exit()
@@ -36,7 +39,7 @@ try:
     with open(bobPubKeyFileName, 'r') as pubKeyFile:
         pubKey = pubKeyFile.read()
 except IOError:
-    print ("Couldn't find " + "\"" + bobPubKeyFileName +
+    print("Couldn't find " + "\"" + bobPubKeyFileName +
            "\"")
     exit()
 
@@ -45,6 +48,6 @@ try:
     with open(outputFileName, 'w') as messageOut:
         encryptedMessage = encryptMessage(loadKey(pubKey), message)
         messageOut.write(base64.b64encode(encryptedMessage))
-except IOError:
+except IOError:     
     print ("Couldn't write to the file " + outputFileName)
     exit()
