@@ -1,8 +1,12 @@
 import sys, time, datetime
+sys.path.insert(0, '../part1/')
+from aliceWriteAES import write
+
 File_Name_AES_Key = "key"
 File_Name_RSA_Key = "id_rsa"
 File_Name_RSA_Pub_Key = "id_rsa.pub"
-count=1
+count=100
+
 try:
     input = sys.argv[1]
     if(len(input) > 7):
@@ -17,7 +21,7 @@ AES_start_time = time.time()
 # AES Encrypt and Decrypt count times
 for x in range(0, count):
     # do encryption and decryption
-    time.sleep(3)
+    time.sleep(.01)
 
 # calculate average time
 AES_end_time = time.time()
