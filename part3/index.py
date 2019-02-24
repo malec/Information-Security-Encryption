@@ -11,14 +11,25 @@ except IndexError:
     print("You need to provide a message to encrypt")
     exit()
 
-# Start stopwatch to measure performance
-start_time = time.time()
-time.sleep(1)
-end_time = time.time()
+# Start stopwatch to measure AES performance
+AES_start_time = time.time()
+# AES Encrypt and Decrypt 100 times
+for(x in range(0,100)):
+    # do encryption and decryption
 
-# Import AES Encrypt and Decrypt
+AES_end_time = time.time()
+AES_uptime = AES_end_time - AES_start_time
+AES_human_uptime = str(datetime.timedelta(seconds=int(AES_uptime)))
 
+# Start stopwatch to measure RSA performance
+RSA_start_time = time.time()
+# RSA Encrypt and Decrypt 100 times
+for(x in range(0,100)):
+    # do encryption and decryption
+    
+RSA_end_time = time.time()
+RSA_uptime = RSA_end_time - RSA_start_time
+RSA_human_uptime = str(datetime.timedelta(seconds=int(RSA_uptime)))
 
-uptime = end_time - start_time
-human_uptime = str(datetime.timedelta(seconds=int(uptime)))
-print human_uptime
+# Print Averages
+print("Average AES encryption and decryption time: " + AES_human_uptime/100)
