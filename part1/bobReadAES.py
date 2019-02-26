@@ -16,5 +16,7 @@ with open(fileName, "rb") as fileKey:
 with open("message.txt", "rb") as fileMessage:
     message = fileMessage.read()
 
+print ("The ciphertext is:\n" + message)
+
 result = Fernet(key).decrypt(message)
-print ("The message is:\n" + result)
+print ("The plaintext is:\n" + result)

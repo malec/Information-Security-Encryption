@@ -4,20 +4,19 @@ import sys
 keyFileName = 'key.txt'
 messageOutFileName = "message.txt"
 try:
-    message=sys.argv[1]
+    message = sys.argv[1]
 except IndexError:
     print "You need to provide a message."
     exit()
-def write():
-    # Reading alice's key
-    with open(keyFileName, "rb") as filealiceKey:
-        alicekey = filealiceKey.read()
 
-    # Encrypt message
-    encryptedMessage = Fernet(alicekey).encrypt(message)
+# Reading alice's key
+with open(keyFileName, "rb") as filealiceKey:
+    alicekey = filealiceKey.read()
 
-    # Write Result
-    with open(messageOutFileName, "wb") as filealiceMessage:
-        filealiceMessage.write(encryptedMessage)
+# Encrypt message
+encryptedMessage = Fernet(alicekey).encrypt(message)
 
-write()
+# Write Result
+with open(messageOutFileName, "wb") as filealiceMessage:
+    filealiceMessage.write(encryptedMessage)
+print("The encrypted message is: \n" + encryptedMessage)
