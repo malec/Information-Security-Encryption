@@ -67,5 +67,8 @@ signer = aliceKey.signer(
 signer.update(message)
 sig = base64.b64encode(signer.finalize())
 
+# print for grading
+print("The RSA signature is:\n" + sig)
+
 write(message, sig)
 # Write message and sig to file sigtext
