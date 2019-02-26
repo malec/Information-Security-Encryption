@@ -4,7 +4,7 @@ from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.backends import default_backend
 
-bobPubKeyFileName = "aliceKeys/id_rsa.pub"
+alicePubKeyFileName = "aliceKeys/id_rsa.pub"
 def readFile():
     with open('sigtext', 'r') as sigFile:
         jsonText = sigFile.read()
@@ -39,7 +39,7 @@ def verifySignature(pubKey, message, signature):
         return False
 
 fileContentsAsObj = readFile()
-if verifySignature(parsePubKey(loadKey(bobPubKeyFileName)), fileContentsAsObj['message'], fileContentsAsObj['signature']):
+if verifySignature(parsePubKey(loadKey(alicePubKeyFileName)), fileContentsAsObj['message'], fileContentsAsObj['signature']):
      print 'Success'
 else:
     print "Invalid signature"
