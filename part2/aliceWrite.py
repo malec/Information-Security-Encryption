@@ -47,7 +47,9 @@ except IOError:
 try:
     with open(outputFileName, 'w') as messageOut:
         encryptedMessage = encryptMessage(loadKey(pubKey), message)
-        messageOut.write(base64.b64encode(encryptedMessage))
+        encryptedMessage = base64.b64encode(encryptedMessage)
+        messageOut.write(encryptedMessage)
+        print("The cipher text is: \n" + encryptedMessage)
 except IOError:     
     print ("Couldn't write to the file " + outputFileName)
     exit()

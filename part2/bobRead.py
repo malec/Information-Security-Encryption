@@ -26,7 +26,9 @@ private_key = deserializePrivateKey(keyData)
 # Read the cipher text
 try:
     with open(File_Name_Decrypt, 'r') as ctextFile:
-        cipherText = base64.b64decode(ctextFile.read())
+        cipherText = ctextFile.read()
+        print("The cipher text is: \n" + cipherText)
+        cipherText = base64.b64decode(cipherText)
 except IOError:
     print ("Couldn't read the file " + File_Name_Decrypt)
     exit()
@@ -39,4 +41,4 @@ plainText = private_key.decrypt(
         label=None
     )
 )
-print plainText
+print ("The plain text is: \n" + plainText)
