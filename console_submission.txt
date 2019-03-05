@@ -1,0 +1,97 @@
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3$ cd part1
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part1$ python aliceWriteAES.py hello
+The encrypted message is:
+gAAAAABcfXkh10CNN-vq0h5EXuuSYHVlPWzgeZO406Ow_J7ImFAAHuq0G0duQDLPJEJtRmhPHwS6HJpYJ9tr0cen6rYCE_BY8w==
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part1$ python aliceWriteAES.py hello^C
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part1$ python bobReadAES.py
+Printing an encrypted message from message.txt using key.txt
+The ciphertext is:
+gAAAAABcfXkh10CNN-vq0h5EXuuSYHVlPWzgeZO406Ow_J7ImFAAHuq0G0duQDLPJEJtRmhPHwS6HJpYJ9tr0cen6rYCE_BY8w==
+The plaintext is:
+hello
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part1$ python aliceWriteAES.py "hello this is a long message"
+The encrypted message is:
+gAAAAABcfXl8wrXmsbPv8MgA3Z1rWULnT4PlusiQN1upTvc2xllyCtl-nc97SZMHGggC-NKgHM_hDlhmBVwp693T8LuYQ4YvK1WN9k_DVq-K7rBuW2NPFgE=
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part1$ cd ../part2
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part2$ ls
+aliceKeys  aliceWrite.py  bobKeys  bobRead.py  ctext
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part2$ ls aliceKeys/
+id_rsa  id_rsa.pub
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part2$ python aliceWrite.py "this is a message"
+The cipher text is:
+FC7aK7D4qhYPhvlOvIXIZyHjLWJct66pEeIvxc+KbP/l60CAgDJ8GuERyfg0BD/Xonm4/aU7FlG9D4D6W6uNTf39gho3GBwVRtNHCtvRBFp5nIvi4Kd9CfyE1Wh53jRhs6KFtxdrszU10rxaAfr6afHatHL7HXPV6dfCSVDTfWtqmMpkLA7qePpL+EHSCf4I4ZNR/nDdysnrkABbtxc7fez4J+qmQQ9R19ZytwxSfimKC80w/GAZEjxN2Ti2XOg2DgdFoC9Y5Fu+Q1v4M8KVXxPCzSZthh8+n79BXpxoEpYpliwxD1XOKrojIYi5gq7WWdJzBPQtIa2wytjm/U7FqQ==
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part2$ cat ctext
+FC7aK7D4qhYPhvlOvIXIZyHjLWJct66pEeIvxc+KbP/l60CAgDJ8GuERyfg0BD/Xonm4/aU7FlG9D4D6W6uNTf39gho3GBwVRtNHCtvRBFp5nIvi4Kd9CfyE1Wh53jRhs6KFtxdrszU10rxaAfr6afHatHL7HXPV6dfCSVDTfWtqmMpkLA7qePpL+EHSCf4I4ZNR/nDdysnrkABbtxc7fez4J+qmQQ9R19ZytwxSfimKC80w/GAZEjxN2Ti2XOg2DgdFoC9Y5Fu+Q1v4M8KVXxPCzSZthh8+n79BXpxoEpYpliwxD1XOKrojIYi5gq7WWdJzBPQtIa2wytjm/U7FqQ==alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part2$ python bob
+bobKeys/    bobRead.py
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part2$ python bobRead.py
+The cipher text is:
+FC7aK7D4qhYPhvlOvIXIZyHjLWJct66pEeIvxc+KbP/l60CAgDJ8GuERyfg0BD/Xonm4/aU7FlG9D4D6W6uNTf39gho3GBwVRtNHCtvRBFp5nIvi4Kd9CfyE1Wh53jRhs6KFtxdrszU10rxaAfr6afHatHL7HXPV6dfCSVDTfWtqmMpkLA7qePpL+EHSCf4I4ZNR/nDdysnrkABbtxc7fez4J+qmQQ9R19ZytwxSfimKC80w/GAZEjxN2Ti2XOg2DgdFoC9Y5Fu+Q1v4M8KVXxPCzSZthh8+n79BXpxoEpYpliwxD1XOKrojIYi5gq7WWdJzBPQtIa2wytjm/U7FqQ==
+The plain text is:
+this is a message
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part2$ python bobRead.py
+The cipher text is:
+FC7aK7D4qhYPhvlOvIXIZyHjLWJct66pEeIvxc+KbP/l60CAgDJ8GuERyfg0BD/Xonm4/aU7FlG9D4D6W6uNTf39gho3GBwVRtNHCtvRBFp5nIvi4Kd9CfyE1Wh53jRhs6KFtxdrszU10rxaAfr6afHatHL7HXPV6dfCSVDTfWtqmMpkLA7qePpL+EHSCf4I4ZNR/nDdysnrkABbtxc7fez4J+qmQQ9R19ZytwxSfimKC80w/GAZEjxN2Ti2XOg2DgdFoC9Y5Fu+Q1v4M8KVXxPCzSZthh8+n79BXpxoEpYpliwxD1XOKrojIYi5gq7WWdJzBPQtIa2wytjm/U7FqQ==yyy
+The plain text is:
+this is a message
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part2$ python bobRead.py
+The cipher text is:
+FC7aK7D4qhYPhvlOvIXIZyHjLWJct66pEeIvxc+KbP/l60CAgDJ8GuERyfg0BD/Xonm4/aU7FlG9D4D6W6uNTf39gho3GBwVRtNHCtvRBFp5nIvi4Kd9CfyE1Wh53jRhs6KFtxdrszU10rxaAfr6afHatHL7HXPV6dfCSVDTfWtqmMpkLA7qePpL+EHSCf4I4ZNR/nDdysnrkABbtxc7fez4J+qmQQ9R19ZytwxSfimKC80w/GAZEjxN2Ti2XOg2DgdFoC9Y5Fu+Q1v4M8KVXxPCzSZthh8+n79BXpxoEpYpliwxD1XOKrojIYi5gq7WWdJzBPQtIa2wytjm/lllllU7FqQ==
+Traceback (most recent call last):
+  File "bobRead.py", line 41, in <module>
+    label=None
+  File "/usr/lib/python2.7/dist-packages/cryptography/hazmat/backends/openssl/rsa.py", line 532, in decrypt
+    raise ValueError("Ciphertext length must be equal to key size.")
+ValueError: Ciphertext length must be equal to key size.
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part2$ python bobRead.py
+The cipher text is:
+XC7aK7D4qhYPhvlOvIXIZyHjLWJct66pEeIvxc+KbP/l60CAgDJ8GuERyfg0BD/Xonm4/aU7FlG9D4D6W6uNTf39gho3GBwVRtNHCtvRBFp5nIvi4Kd9CfyE1Wh53jRhs6KFtxdrszU10rxaAfr6afHatHL7HXPV6dfCSVDTfWtqmMpkLA7qePpL+EHSCf4I4ZNR/nDdysnrkABbtxc7fez4J+qmQQ9R19ZytwxSfimKC80w/GAZEjxN2Ti2XOg2DgdFoC9Y5Fu+Q1v4M8KVXxPCzSZthh8+n79BXpxoEpYpliwxD1XOKrojIYi5gq7WWdJzBPQtIa2wytjm/U7FqQ==
+Traceback (most recent call last):
+  File "bobRead.py", line 41, in <module>
+    label=None
+  File "/usr/lib/python2.7/dist-packages/cryptography/hazmat/backends/openssl/rsa.py", line 534, in decrypt
+    return _enc_dec_rsa(self._backend, self, ciphertext, padding)
+  File "/usr/lib/python2.7/dist-packages/cryptography/hazmat/backends/openssl/rsa.py", line 76, in _enc_dec_rsa
+    return _enc_dec_rsa_pkey_ctx(backend, key, data, padding_enum)
+  File "/usr/lib/python2.7/dist-packages/cryptography/hazmat/backends/openssl/rsa.py", line 105, in _enc_dec_rsa_pkey_ctx
+    _handle_rsa_enc_dec_error(backend, key)
+  File "/usr/lib/python2.7/dist-packages/cryptography/hazmat/backends/openssl/rsa.py", line 147, in _handle_rsa_enc_dec_error
+    raise ValueError("Decryption failed.")
+ValueError: Decryption failed.
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part2$ cd ../part3
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part3$ ls
+id_rsa  id_rsa.pub  index.py  key
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part3$ python index.py "science"
+Average AES encryption and decryption time (H:MM:SS): 0:00:00.001653
+Average RSA encryption and decryption time (H:MM:SS): 0:00:00.000867
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part3$ cd ../part4
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part4$ ls
+aliceWrite.py  bobRead.py  key  mactext
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part4$ python aliceWrite.py message
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part4$ python aliceWrite.py "part 4 message longer"
+message is too long
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part4$ python aliceWrite.py "part 4 message"
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part4$ cat mactext
+{"message": "part 4 message", "hmac": "9gIcp7s20Y3uiuHK2+F9J8OTZcDuQN48hU0mUBnyhVI="}alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part4$ python bobRead.py
+Invalid signature
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part4$ cd ../part5
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part5$ ls
+aliceKeys  aliceWrite.py  bobKeys  bobRead.py  sigtext
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part5$ python aliceWrite.py "hello message"
+The RSA signature is:
+b14v8C+SADFURNhm5Jjdm4TVVCQomI0jZIk8Z7iDtC8EqWd2/fZAPYe0twkoyrHrNjlBAF/S35m5BKY7ps74ZQJJpYLhhUPllEaD9e/X6uNHih46TClk06+Wa9BmLLwdIVZbD97gmhMQbCkX0x5C7nqw/IIIGwwhUQbgk7qxK3ltwPtfXwfFxQo+N98bxJDFc8wDWBxEt87VV+aIU5WprBuu9RH01+wIWDfGMhzmSEyMo6jxyvJlEtbf5jUNUyU0iQj5Rq1D69pkrdgDQmF+aRd1HpCcd6idJEFfZTEBcV3zIwR+pnJ1pADHP6I98RCyC3H6jFB8zvY7z2Rs4S7aVg==
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part5$ python bob
+bobKeys/    bobRead.py
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part5$ python bobRead.py
+Success
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part5$ python bobRead.py
+Invalid signature
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part5$ cd ../part6
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part6$ ls
+id_rsa  id_rsa.pub  index.py  key
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part6$ python index.py
+You need to provide a message to encrypt
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part6$ python index.py "science"
+Average HMAC generation time (H:MM:SS): 0:00:00.001678
+Average RSA signature generation time (H:MM:SS): 0:00:00.001005
+Average RSA signature verification time (H:MM:SS): 0:00:00.000144
+alec@alectpvm:~/git/CSCE-4853-Information-Security/homework3/part6$
